@@ -1,0 +1,267 @@
+{
+    "info": {
+      "_postman_id": "a1b2c3d4-e5f6-7890-g1h2-i3j4k5l6m7n8",
+      "name": "MeetX Activity Booking API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "User Registration",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@meetx.com\",\n  \"phone_number\": \"+1234567890\",\n  \"password\": \"password123\"\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/api/auth/register",
+            "host": ["{{base_url}}"],
+            "path": ["api","auth","register"]
+          }
+        },
+        "response": [
+          {
+            "name": "Success",
+            "originalRequest": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@meetx.com\",\n  \"phone_number\": \"+1234567890\",\n  \"password\": \"password123\"\n}"
+              },
+              "url": {
+                "raw": "{{base_url}}/api/auth/register",
+                "host": ["{{base_url}}"],
+                "path": ["api","auth","register"]
+              }
+            },
+            "status": "Created",
+            "code": 201,
+            "_postman_previewlanguage": "json",
+            "body": "{\n  \"message\": \"User registered successfully\",\n  \"userId\": 1\n}"
+          }
+        ]
+      },
+      {
+        "name": "User Login",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"email\": \"john@meetx.com\",\n  \"password\": \"password123\"\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/api/auth/login",
+            "host": ["{{base_url}}"],
+            "path": ["api","auth","login"]
+          }
+        },
+        "response": [
+          {
+            "name": "Success",
+            "originalRequest": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"email\": \"john@meetx.com\",\n  \"password\": \"password123\"\n}"
+              },
+              "url": {
+                "raw": "{{base_url}}/api/auth/login",
+                "host": ["{{base_url}}"],
+                "path": ["api","auth","login"]
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "_postman_previewlanguage": "json",
+            "body": "{\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\"\n}"
+          }
+        ]
+      },
+      {
+        "name": "List Activities (Public)",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "{{base_url}}/api/activities",
+            "host": ["{{base_url}}"],
+            "path": ["api","activities"]
+          }
+        },
+        "response": [
+          {
+            "name": "Success",
+            "originalRequest": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{base_url}}/api/activities",
+                "host": ["{{base_url}}"],
+                "path": ["api","activities"]
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "_postman_previewlanguage": "json",
+            "body": "[\n  {\n    \"id\": 1,\n    \"title\": \"Cricket Match\",\n    \"description\": \"Weekend cricket tournament\",\n    \"location\": \"City Sports Complex\",\n    \"date_time\": \"2023-06-15T16:00:00.000Z\"\n  },\n  {\n    \"id\": 2,\n    \"title\": \"Movie Night\",\n    \"description\": \"Latest blockbuster screening\",\n    \"location\": \"City Cinema Hall\",\n    \"date_time\": \"2023-06-16T19:30:00.000Z\"\n  }\n]"
+          }
+        ]
+      },
+      {
+        "name": "Book an Activity",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Authorization",
+              "value": "Bearer {{auth_token}}"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"activity_id\": 1\n}"
+          },
+          "url": {
+            "raw": "{{base_url}}/api/bookings",
+            "host": ["{{base_url}}"],
+            "path": ["api","bookings"]
+          }
+        },
+        "response": [
+          {
+            "name": "Success",
+            "originalRequest": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"activity_id\": 1\n}"
+              },
+              "url": {
+                "raw": "{{base_url}}/api/bookings",
+                "host": ["{{base_url}}"],
+                "path": ["api","bookings"]
+              }
+            },
+            "status": "Created",
+            "code": 201,
+            "_postman_previewlanguage": "json",
+            "body": "{\n  \"message\": \"Activity booked successfully\",\n  \"bookingId\": 1\n}"
+          }
+        ]
+      },
+      {
+        "name": "Get My Bookings",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{auth_token}}"
+            }
+          ],
+          "url": {
+            "raw": "{{base_url}}/api/bookings/my-bookings",
+            "host": ["{{base_url}}"],
+            "path": ["api","bookings","my-bookings"]
+          }
+        },
+        "response": [
+          {
+            "name": "Success",
+            "originalRequest": {
+              "method": "GET",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer {{auth_token}}"
+                }
+              ],
+              "url": {
+                "raw": "{{base_url}}/api/bookings/my-bookings",
+                "host": ["{{base_url}}"],
+                "path": ["api","bookings","my-bookings"]
+              }
+            },
+            "status": "OK",
+            "code": 200,
+            "_postman_previewlanguage": "json",
+            "body": "[\n  {\n    \"booking_id\": 1,\n    \"id\": 1,\n    \"title\": \"Cricket Match\",\n    \"description\": \"Weekend cricket tournament\",\n    \"location\": \"City Sports Complex\",\n    \"date_time\": \"2023-06-15T16:00:00.000Z\"\n  }\n]"
+          }
+        ]
+      }
+    ],
+    "variable": [
+      {
+        "key": "base_url",
+        "value": "http://localhost:3000",
+        "type": "string"
+      },
+      {
+        "key": "auth_token",
+        "value": "",
+        "type": "string"
+      }
+    ],
+    "event": [
+      {
+        "listen": "prerequest",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            "// Set environment variables if needed",
+            ""
+          ]
+        }
+      },
+      {
+        "listen": "test",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            "// Example test script",
+            "pm.test(\"Status code is 200\", function () {",
+            "    pm.response.to.have.status(200);",
+            "});"
+          ]
+        }
+      }
+    ]
+  }
